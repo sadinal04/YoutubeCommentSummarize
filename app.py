@@ -18,7 +18,7 @@ logging.basicConfig(
 def load_model():
     logging.info("Memuat model dan tokenizer...")
     model_path = "Sadinal/fine_tuned_t5_indonesian_youtube"
-    tokenizer = T5Tokenizer.from_pretrained(model_path, use_fast=False)
+    tokenizer = T5Tokenizer.from_pretrained("cahya/t5-base-indonesian-summarization-cased")
     model = T5ForConditionalGeneration.from_pretrained(model_path)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logging.info(f"Model berhasil dimuat ke device: {device}")
