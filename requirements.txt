@@ -1,0 +1,5 @@
+streamlit
+transformers
+torch
+google-api-python-client
+protobuf<4
