@@ -18,7 +18,7 @@ logging.basicConfig(
 def load_model():
     logging.info("Memuat model dan tokenizer...")
     model_path = "Sadinal/fine_tuned_t5_indonesian_youtube_NLP"
-    tokenizer = T5Tokenizer.from_pretrained("cahya/t5-base-indonesian-summarization-cased")
+    tokenizer = T5Tokenizer.from_pretrained("Sadinal/fine_tuned_t5_indonesian_youtube_NLP")
     model = T5ForConditionalGeneration.from_pretrained(model_path)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logging.info(f"Model berhasil dimuat ke device: {device}")
@@ -115,12 +115,6 @@ if st.button("🔍 Proses dan Ringkas"):
                 st.subheader("💬 Contoh Komentar")
                 for c in comments[:3]:
                     st.write("- " + c[:100])
-
-                # Tambah tombol untuk lihat semua komentar
-                if st.button("👁️ Lihat Semua Komentar"):
-                    st.subheader("📄 Semua Komentar:")
-                    for i, comment in enumerate(comments, 1):
-                        st.write(f"{i}. {comment}")
 
                 st.subheader("📝 Ringkasan Model")
                 st.success(summary)
