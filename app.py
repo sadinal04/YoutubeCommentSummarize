@@ -116,5 +116,11 @@ if st.button("🔍 Proses dan Ringkas"):
                 for c in comments[:3]:
                     st.write("- " + c[:100])
 
+                # Tambah tombol untuk lihat semua komentar
+                if st.button("👁️ Lihat Semua Komentar"):
+                    st.subheader("📄 Semua Komentar:")
+                    for i, comment in enumerate(comments, 1):
+                        st.write(f"{i}. {comment}")
+
                 st.subheader("📝 Ringkasan Model")
                 st.success(summary)
