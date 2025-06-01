@@ -3,18 +3,19 @@ import re
 import logging
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from googleapiclient.discovery import build
+import torch
 
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    filename="app.log",
-    filemode="a"
+    filename="app.log",  # Atau ganti jadi None jika tidak mau tulis ke file
+    filemode="a"          # Append log
 )
 
+# Load model & tokenizer dari Hugging Face Hub
 @st.cache_resource
 def load_model():
-    import torch  # Import torch di sini agar tidak di-import saat streamlit load modul pertama kali
     logging.info("Memuat model dan tokenizer...")
     model_path = "Sadinal/fine_tuned_t5_indonesian_youtube_NLP"
     tokenizer = T5Tokenizer.from_pretrained("cahya/t5-base-indonesian-summarization-cased")
